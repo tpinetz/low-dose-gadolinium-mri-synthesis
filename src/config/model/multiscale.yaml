@@ -1,0 +1,12 @@
+in_channels:          3
+channels:             32
+out_channels:         1
+norm_fn:              "none"
+pool_type:            "max"
+attn_enable:          true
+attn_heads:           4
+attn_size:            3
+
+in_cond_channels:     3
+cond_channels:        128
+cond_layers:          2

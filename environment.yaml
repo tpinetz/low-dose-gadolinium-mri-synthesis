@@ -1,0 +1,18 @@
+name: lowdosegeneration
+channels:
+  - pytorch
+  - conda-forge
+  - soumith
+  - defaults
+dependencies:
+  - python==3.9
+  - pip==23.1.1
+  - pip:
+      - nibabel==5.1.0
+      - torch
+      - scipy==1.10.1
+      - click==8.1.3
+      - hydra-core==1.3.2
+      - pytorch-lightning
+      - setuptools==67.7.2
+      - torchvision

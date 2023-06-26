@@ -1,0 +1,5 @@
+dose_level: 0.3
+ckpt: '/home/tpinetz/repos/low-dose-gadolinium-mri-synthesis/checkpoints/model.ckpt'
+data_dir: '/home/tpinetz/repos/low-dose-gadolinium-mri-synthesis/data/'
+save_path: '/home/tpinetz/repos/low-dose-gadolinium-mri-synthesis/results'
+field_strength: 3

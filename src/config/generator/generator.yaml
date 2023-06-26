@@ -1,0 +1,13 @@
+in_channels:          4
+channels:             8
+out_channels:         1
+pool_type:            "max"
+norm_fn:              "batch"
+attn_enable:          true
+attn_heads:           4
+attn_size:            3
+
+in_cond_channels:     1
+cond_channels:     128
+cond_layers:          2
+normalization:       True
