@@ -255,7 +255,8 @@ def PatchWiseWasserSteinSinkhorn(img1: torch.Tensor,
     C_res = torch.abs(x[:, None, :] - y[:, :, None])
     with torch.no_grad():
         Q = C_res.detach()
-        Q = torch.exp(-Q / torch.amax(C_res, dim=(1,2), keepdim=True) * 10)
+        eps = torch.max(torch.max(Q, -1, keepdim=True)[0], -2, keepdim=True)[0] * 10
+        Q = torch.exp(-Q / eps)
         b = torch.ones((Q.shape[0], window_size ** 3, 1)).type_as(Q)
         T = 1
         for _ in range(num_iterations):
