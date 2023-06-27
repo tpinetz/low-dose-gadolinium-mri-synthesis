@@ -58,7 +58,8 @@ Network architectures are defined in networks_cond.py and discriminator.py and d
 
 ## Dataset
 
-We use the BraTS dataset to produce our results. 
+In addition to our inhouse dataset, we also used the BraTS dataset to validate our method.
+We provide all necessary checkpoints and scripts to reproduce the results obtained on this publicly available dataset. 
 
 If you use the same dataset you should cite the respective paper as is descriped here: https://www.med.upenn.edu/cbica/brats2020/data.html
 
