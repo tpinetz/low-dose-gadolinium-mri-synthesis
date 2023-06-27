@@ -9,6 +9,12 @@ Source code for the paper "Faithful Synthesis of Low-dose Contrast-enhanced Brai
 [Alexander Radbruch](https://scholar.google.com/citations?user=lYfsUSkAAAAJ&hl=en&oi=ao), 
 [Alexander Effland](https://scholar.google.com/citations?user=BDTa2QsAAAAJ&hl=en&oi=ao)
 
+_[Institute of Applied Mathematics](https://www.mathematics-and-life-sciences.uni-bonn.de/en/research/effland-group), University of Bonn, Germany_
+
+_[Department of Neuroradiology](https://www.ukbonn.de/neuroradiologie/), University Medical Center Bonn, Germany_
+
+[[paper arxiv](https://arxiv.org/pdf/2306.14678.pdf)] 
+
 ## Overview
 
 * Teaser Figure
