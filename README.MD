@@ -9,6 +9,16 @@ Source code for the paper "Faithful Synthesis of Low-dose Contrast-enhanced Brai
 [Alexander Radbruch](https://scholar.google.com/citations?user=lYfsUSkAAAAJ&hl=en&oi=ao), 
 [Alexander Effland](https://scholar.google.com/citations?user=BDTa2QsAAAAJ&hl=en&oi=ao)
 
+## Overview
+
+* Teaser Figure
+
+  <img src="figs/model.png" width="800px"/> 
+
+* Noise-preserving content loss
+
+  <img src="figs/ot_loss.png" width="800px"/> 
+    
 
 ## Requirements
 
@@ -47,4 +57,13 @@ We use the BraTS dataset to produce our results.
 If you use the same dataset you should cite the respective paper as is descriped here: https://www.med.upenn.edu/cbica/brats2020/data.html
 
 
-## Bibtex
+## Bibtex (Preprint)
+
+
+```BibTex
+@article{pinetz2023faithful,
+title={Faithful Synthesis of Low-dose Contrast-enhanced Brain MRI Scans using Noise-preserving Conditional GANs}, 
+author={Pinetz, Thomas and Kobler, Erich and Haase, Robert and Deike-Hofmann, Katerina and Radbruch, Alexander and Effland, Alexander},
+year={2023},
+journal={arXiv preprint arXiv:2306.14678}
+}
