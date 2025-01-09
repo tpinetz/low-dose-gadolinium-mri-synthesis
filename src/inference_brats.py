@@ -4,6 +4,10 @@ import logging
 import numpy as np
 import os
 import torch
+import re
+
+from pathlib import Path
+
 ch = logging.StreamHandler()
 
 logging.basicConfig(level=logging.INFO,
@@ -47,10 +51,12 @@ def main(ctx: click.Context,
     if not os.path.exists(save_path):
         os.makedirs(save_path)
 
-    for patient in os.listdir(data_path):
-        t1_zero_nifti = nib.load(os.path.join(data_path, "{}/{}_t1.nii.gz".format(patient, patient)))
+    data_path = Path(data_path)
+    for patient in data_path.iterdir():
+        print(f"Computing patient: {patient}")
+        t1_zero_nifti = nib.load([seg for seg in patient.glob("*") if re.match(".*t1?n.nii.gz", seg.name)][0])
         t1_zero = t1_zero_nifti.get_fdata()
-        t1_full = nib.load(os.path.join(data_path, "{}/{}_t1ce.nii.gz".format(patient, patient))).get_fdata()
+        t1_full = nib.load(list(patient.glob("*t1c*"))[0]).get_fdata()
 
         vmax = np.quantile(t1_zero, 0.95)
         atlas_mask = t1_zero > 1e-6
@@ -59,15 +65,15 @@ def main(ctx: click.Context,
         nativ = t1_zero / vmax
         full = t1_full * scale / vmax
 
-        noise = np.random.normal(size=full.shape)
-        inp = np.stack([noise, nativ, full])
-        x = torch.from_numpy(inp[np.newaxis, ...].astype(np.float32)).to(device)
-        cond = torch.from_numpy(np.array([[dose_level, (field_strength - 2.25) / 0.75]]).astype(np.float32)).to(device)
         with torch.no_grad():
+            noise = np.random.normal(size=full.shape)
+            inp = np.stack([noise, nativ, full])
+            x = torch.from_numpy(inp[np.newaxis, ...].astype(np.float32)).to(device)
+            cond = torch.from_numpy(np.array([[dose_level, (field_strength - 2.25) / 0.75]]).astype(np.float32)).to(device)
             prediction = model(x, cond)[-1]
-        
-        result_nifti = nib.Nifti1Image((nativ + prediction[0,0].detach().cpu().numpy()) * vmax, t1_zero_nifti.affine)
-        nib.save(result_nifti, os.path.join(save_path, f"{patient}_prediction_{dose_level}.nii.gz"))
+
+            result_nifti = nib.Nifti1Image((nativ + prediction[0,0].detach().cpu().numpy()) * vmax, t1_zero_nifti.affine)
+            nib.save(result_nifti, os.path.join(save_path, f"{patient.name}_prediction_{dose_level}.nii.gz"))
 
 
 
