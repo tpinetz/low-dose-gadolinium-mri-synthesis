@@ -72,5 +72,5 @@ If you use the same dataset you should cite the respective paper as is descriped
 title={Faithful Synthesis of Low-dose Contrast-enhanced Brain MRI Scans using Noise-preserving Conditional GANs}, 
 author={Pinetz, Thomas and Kobler, Erich and Haase, Robert and Deike-Hofmann, Katerina and Radbruch, Alexander and Effland, Alexander},
 year={2023},
-journal={arXiv preprint arXiv:2306.14678}
+journal={International Conference on Medical Image Computing and Computer-Assisted Intervention}
 }
